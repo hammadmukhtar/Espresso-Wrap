@@ -1,4 +1,4 @@
-package com.innovoid.espressowrap;
+package com.servicemarket.app;
 
 import android.support.annotation.CheckResult;
 import android.support.test.espresso.AmbiguousViewMatcherException;
@@ -7,12 +7,16 @@ import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.action.ScrollToAction;
 import android.support.test.espresso.matcher.ViewMatchers;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.servicemarket.app.utils.LOGGER;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -33,7 +37,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.anyOf;
 
-public class EspressoWrap{
+public class EspressoWrapper{
 
     private static final int RETRY_COUNT = 5;
     private static final int RETRY_COUNT_OPTIONAL = 2;
@@ -276,7 +280,7 @@ public class EspressoWrap{
                 try {
                     view.perform(customScrollTo(), actionOnItemAtPosition(index, click()));
                 }catch (Exception e){
-                    
+                    LOGGER.log(this, e);
                     view.perform(actionOnItemAtPosition(index, click()));
                 }
                 performed = true;
@@ -379,8 +383,10 @@ public class EspressoWrap{
             });
             return true;
         } catch (AmbiguousViewMatcherException ex) {
+            LOGGER.log("Automation", ex);
             return true; // Found more than 1 views
         } catch (Exception ex) {
+            LOGGER.log("Automation", ex);
             return false;
         }
     }
@@ -440,8 +446,8 @@ public class EspressoWrap{
             @Override
             public Matcher<View> getConstraints() {
                 return allOf(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE), isDescendantOfA(anyOf(
-                        isAssignableFrom(ScrollView.class), isAssignableFrom(HorizontalScrollView.class)/*,
-                        isAssignableFrom(RecyclerView.class), isAssignableFrom(NestedScrollView.class)*/))
+                        isAssignableFrom(ScrollView.class), isAssignableFrom(HorizontalScrollView.class),
+                        isAssignableFrom(RecyclerView.class), isAssignableFrom(NestedScrollView.class)))
                 );
             }
 
