@@ -7,8 +7,6 @@ import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.action.ScrollToAction;
 import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -442,8 +440,8 @@ public class EspressoWrap{
             @Override
             public Matcher<View> getConstraints() {
                 return allOf(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE), isDescendantOfA(anyOf(
-                        isAssignableFrom(ScrollView.class), isAssignableFrom(HorizontalScrollView.class),
-                        isAssignableFrom(RecyclerView.class), isAssignableFrom(NestedScrollView.class)))
+                        isAssignableFrom(ScrollView.class), isAssignableFrom(HorizontalScrollView.class)/*,
+                        isAssignableFrom(RecyclerView.class), isAssignableFrom(NestedScrollView.class)*/))
                 );
             }
 

@@ -5,7 +5,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'com.innovoid'
-version = '1.0.1'
+version = '1.0.21.0.2'
 
 install {
     repositories.mavenInstaller {
@@ -18,7 +18,7 @@ install {
             packaging 'aar'
             groupId 'com.innovoid'
             artifactId 'espresso-wrap'
-            version '1.0.1'
+            version '1.0.2'
 
             licenses {
                 license {
@@ -49,14 +49,14 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = 'maven'
-        name = 'espresso-wrap'
+        name = 'EspressoWrap'
         userOrg = user
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/hammadmukhtar/Espresso-Wrap.git'
         version {
-            name = '1.0.1'
-            desc = 'Espresso Wrapper 1.0.1'
-            vcsTag = '1.0.1'
+            name = '1.0.2'
+            desc = 'Espresso Wrapper 1.0.2'
+            vcsTag = '1.0.2'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
@@ -70,7 +70,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 2
-        versionName "1.0.1"
+        versionName "1.0.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -84,13 +84,13 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:recyclerview-v7:26.1.0"
+    //compile "com.android.support:recyclerview-v7:26.1.0"
 
    /* Espresso and JUnit */    testCompile 'junit:junit:4.12'
     androidTestCompile'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestCompile "com.android.support:support-annotations:26.1.0"
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:3.0.1'
-    compile 'com.android.support.test.espresso:espresso-idling-resource:3.0.1'
+    //compile 'com.android.support.test.espresso:espresso-idling-resource:3.0.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'support-v4'
