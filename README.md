@@ -2,7 +2,7 @@
 A wrapper library for Espresso to help write UI tests with helper functions which take care of the boilerplate code.
 
 ## Usage
-Extend your UI Test class with EspressoWrap, then simply call these functions to perform desired functionality.
+Extend your UI Test class with EspressoWrapper, then simply call these functions to perform desired functionality.
 
 ```java
   
